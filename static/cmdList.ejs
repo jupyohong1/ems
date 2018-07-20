@@ -1,0 +1,8 @@
+<% cmdList.forEach(function(command) { %>    
+    <li class="nav-item">
+        <!-- <a href="" class="nav-link"> -->
+        <a class="nav-link" onclick="cmd_click('<%= command.cmd %>','<%= command.syntax %>')">
+            <%= command.cmd %>
+        </a>
+    </li>
+<% }); %>

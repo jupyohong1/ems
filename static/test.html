@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>TL1 Test</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="frame">
+	<div class="container">        
+		<div class="nav">
+            <div>
+                <select id="category" class="category" onchange="category_change(this);">
+                    <option value="">명령어 분류</option>
+                    <% include ./category.ejs %>
+                </select>
+            </div>
+			<ul class="nav-list">
+        <% include ./cmdList.ejs %>
+			</ul>
+		</div>
+		<!-- //nav -->
+		<div class="syntax">			        
+        <div id="command" class="syntax">Command</div>
+        <p></p>
+        <div id="syntax" class="syntax">Syntax</div>
+    </div>
+    <div class="command">      
+        <input id="cmdReq" class="cmdBox" type="text">
+        <input id="sendCmdBtn" class="button" type="button" value="SEND" onclick="sendCmdBtn_click();">
+        <!-- <input id="clrCmdBtn" class="button" type="button" value="CLEAR" onclick="clearCmdBtn_click();"> -->
+        <textarea id="cmdResultView" class="cmdResultView" readonly></textarea>        
+    </div>
+    <div class="report">
+      <a>Report</a>
+      <input id="clrRptBtn" class="button" type="button" value="CLEAR" onclick="clearRptBtn_click();">
+      <textarea id="reportView" class="reportView" readonly></textarea>
+    </div>
+	</div>
+	<!-- //container -->
+	<div class="footer">
+    <p>Copyright</p>
+	</div>
+	<!-- //footer -->
+</div>
+<!-- //frame -->
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.js"></script>
+<script src="js/script.js"></script>
+
+</html>

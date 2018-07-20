@@ -1,0 +1,9 @@
+<% lastValue = ''; %>
+<% cmdList.forEach(function(command) { %>    
+    <% if(lastValue != command.category) { %>
+        <option value="'<%= command.category %>'">
+            <%= command.category %>
+        </option>
+        <% lastValue = command.category %>
+    <% } %>    
+<% }); %>
