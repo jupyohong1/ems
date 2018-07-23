@@ -4,18 +4,10 @@ const router = express.Router();
 const swaggerUI = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
-// TL1 - admin commands
-// TL1 - alarm commands
-// TL1 - cxc commands
-// TL1 - nms commands
-router.use('/net', require('./tl1/nms/api_net'));
-// TL1 - opc commands
-// TL1 - operation commands
-// TL1 - pm commands
-// TL1 - provision commands
-router.use('/sys', require('./tl1/provision/api_sys'));
-// TL1 - switch commands
-// TL1 - test commands
+// TL1
+router.use('/tl1', require('./tl1/router'));
+
+// DB
 
 // Swagger-UI
 const swaggerDefinition = {
@@ -23,7 +15,7 @@ const swaggerDefinition = {
         title: 'API Docs', // Title (required)
         version: '1.0.0', // Version (required)
     },
-    basePath: '/api',
+    basePath: '/api/tl1',
 };
 // Options for the swagger docs
 const options = {
