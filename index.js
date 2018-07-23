@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const CONFIG = require('./cfg/cfg');
 const socketMgr = require('./sock/sock_mgr');
+const DBMgr = require('./db/db_mgr');
 
 // Middlewares
 app.use(bodyParser.json());
@@ -19,13 +20,6 @@ app.use('/api', require('./routers/api/router'));
 app.use('/test', require('./routers/test'));
 app.use('/report', require('./routers/report'));
 
-// WebServer
-const http = require('http').Server(app);
-socketMgr.createWebSocket(http);
-http.listen(CONFIG.Web.PORT, () => {
-    logger.info(`listening on WebPort: ${CONFIG.Web.PORT}`);
-});
-
 // TL1 Adapter Connect
 socketMgr.createEMSSocket(
     CONFIG.TL1Adapter.IP,
@@ -33,5 +27,16 @@ socketMgr.createEMSSocket(
     CONFIG.TL1Adapter.REP_PORT
 );
 
+// DB Connect
+DBMgr.connectDB(CONFIG.DB);
+
+// WebServer
+const http = require('http').Server(app);
+socketMgr.createWebSocket(http);
+http.listen(CONFIG.Web.PORT, () => {
+    logger.info(`listening on WebPort: ${CONFIG.Web.PORT}`);
+});
+
+// TL1 req/rep process
 socketMgr.repProc();
 socketMgr.reqProc();

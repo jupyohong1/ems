@@ -6,5 +6,21 @@
         "IP" : "192.168.135.251",
         "CMD_PORT" : 6200,
         "REP_PORT" : 6300
+    },
+    "DB" : {
+        "MySQL" : {
+            "IP" : "192.168.135.251",
+            "PORT" : 3306,
+            "USER" : "root",
+            "PASSWORD" : "root",
+            "DATABASE" : "cwnms"
+        }, 
+        "MySQL_RAMDISK" : {
+            "IP" : "192.168.135.251",
+            "PORT" : 45000,
+            "USER" : "root",
+            "PASSWORD" : "root_coweaver",
+            "DATABASE" : "cwnms_mem"
+        }
     }
 }
