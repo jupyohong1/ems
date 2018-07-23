@@ -1,32 +1,39 @@
 // db/db_mgr.js
 const logger = require('../lib/log/logger');
-const DBLIB = require('../lib/db/dblib');
+const mysql = require('mysql');
 
 const DBMgr = {
-    myDB: null,
-    myMemDB: null,
+    mysql: {
+        myDB: null,
+        myMemDB: null,
+    },
 };
 
 /**
  * @param {*} config DB Connection config
  */
-DBMgr.connectDB = function(config) {
-    this.myDB = new DBLIB('MYSQL', 'MYSQL', config.MySQL);
-    this.myMemDB = new DBLIB('MEMDB', 'MYSQL', config.MySQL_RAMDISK);
-    if (this.myDB.connect() && this.myMemDB.connect()) {
-        logger.trace(this.myDB.toString());
-        logger.trace(this.myMemDB.toString());
-        // const conn = this.myDB.getConn;
-        // conn.query('select * from element_tbl', function(err, rows, field) {
-        //     if (err) {
-        //         logger.trace(JSON.stringify(err));
-        //     } else {
-        //         console.log(rows);
-        //     }
-        // });
-    } else {
-        process.exit(1);
-    }
+DBMgr.connectMySQL = function(config) {
+    const myDBcfg = config.MYSQL;
+    const myMemDBCfg = config.MySQL_RAMDISK;
+
+    DBMgr.mysql.myDB = mysql.createPool({
+        connectionLimit: (myDBcfg.MAX_CONN_COUNT == undefined) ?
+                         10 : myDBcfg.MAX_CONN_COUNT,
+        host: myDBcfg.IP,
+        port: myDBcfg.PORT,
+        user: myDBcfg.USER,
+        password: myDBcfg.PASSWORD,
+        database: myDBcfg.DATABASE,
+    });
+    DBMgr.mysql.myMemDB = mysql.createPool({
+        connectionLimit: (myMemDBCfg.MAX_CONN_COUNT == undefined) ?
+                         10 : myDBcfg.MAX_CONN_COUNT,
+        host: myMemDBCfg.IP,
+        port: myMemDBCfg.PORT,
+        user: myMemDBCfg.USER,
+        password: myMemDBCfg.PASSWORD,
+        database: myMemDBCfg.DATABASE,
+    });
 };
 
 module.exports = DBMgr;

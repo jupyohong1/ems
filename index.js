@@ -28,7 +28,7 @@ socketMgr.createEMSSocket(
 );
 
 // DB Connect
-DBMgr.connectDB(CONFIG.DB);
+DBMgr.connectMySQL(CONFIG.DB);
 
 // WebServer
 const http = require('http').Server(app);

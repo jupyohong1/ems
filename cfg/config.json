@@ -13,14 +13,16 @@
             "PORT" : 3306,
             "USER" : "root",
             "PASSWORD" : "root",
-            "DATABASE" : "cwnms"
+            "DATABASE" : "cwnms",
+            "MAX_CONN_COUNT" : 10
         }, 
         "MySQL_RAMDISK" : {
             "IP" : "192.168.135.251",
             "PORT" : 45000,
             "USER" : "root",
             "PASSWORD" : "root_coweaver",
-            "DATABASE" : "cwnms_mem"
+            "DATABASE" : "cwnms_mem",
+            "MAX_CONN_COUNT" : 10
         }
     }
 }
