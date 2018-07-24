@@ -13,7 +13,7 @@ const DBMgr = {
  * @param {*} config DB Connection config
  */
 DBMgr.connectMySQL = function(config) {
-    const myDBcfg = config.MYSQL;
+    const myDBcfg = config.MySQL;
     const myMemDBCfg = config.MySQL_RAMDISK;
 
     DBMgr.mysql.myDB = mysql.createPool({
