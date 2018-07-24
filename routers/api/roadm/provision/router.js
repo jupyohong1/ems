@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-const slotStateData = require('../../../../lib/roadm/provision/slotstatedata');
+const slotStateData = require('../../../../lib/roadm/db/slot_state_data_tbl');
 
 // /api/roadm/slotstatedata
 router.get('/', async function(req, res) {
