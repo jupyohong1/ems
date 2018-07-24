@@ -7,7 +7,8 @@ const swaggerJSDoc = require('swagger-jsdoc');
 // TL1
 router.use('/tl1', require('./tl1/router'));
 
-// DB
+// roadm
+router.use('/roadm', require('./roadm/router'));
 
 // Swagger-UI
 const swaggerDefinition = {
