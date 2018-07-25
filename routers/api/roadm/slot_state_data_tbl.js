@@ -1,8 +1,9 @@
-// routers/api/rowadm/provision/router.js
+// routers/api/rowadm/slot_state_data_tbl.js
 const express = require('express');
 const router = express.Router();
 
-const slotStateData = require('../../../../lib/roadm/db/slot_state_data_tbl');
+const slotStateData = require('../../../lib/roadm/db/slot_state_data_tbl');
+// const element = require('../../../../lib/roadm/db/element_tbl');
 
 // /api/roadm/slotstatedata
 router.get('/', async function(req, res) {
@@ -21,6 +22,7 @@ router.get('/', async function(req, res) {
     // };
 
     await slotStateData.getSlotStateData(param)
+    // await element.getData(param)
     .then(function(obj) {
         res.json(obj);
     }, function(obj) {
