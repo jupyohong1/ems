@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>ROADM</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="nav">
+        <% include ./elementList.ejs %>
+    </div>
+    <!-- //nav -->
+
+    <div class="container">
+        <% include ./slotstatedata.ejs %>
+    </div>
+    <!-- //container -->
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.js"></script>
+<script src="/js/roadm.js"></script>
+
+</html>

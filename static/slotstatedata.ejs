@@ -1,0 +1,10 @@
+<% if (slotStateDataList.length > 0) { %>
+    <% for(let i = 0; i < slotStateDataList.length; i++) { %>
+        <textarea id=<%= slotStateDataList[i].slot_id %>>
+            <%= JSON.stringify(slotStateDataList[i]) %>
+        </textarea>
+    <% } %>
+<% } else { %>
+    no data...
+<% } %>
+

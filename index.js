@@ -9,16 +9,20 @@ const DBMgr = require('./db/db_mgr');
 
 // Middlewares
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+    extended: true,
+}));
 app.set('views', __dirname + '\\static');
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 app.use(express.static('static'));
 
+
 // Routing
 app.use('/api', require('./routers/api/router'));
 app.use('/test', require('./routers/test'));
 app.use('/report', require('./routers/report'));
+app.use('/roadm', require('./routers/roadm/router'));
 
 // TL1 Adapter Connect
 socketMgr.createEMSSocket(

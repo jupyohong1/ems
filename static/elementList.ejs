@@ -1,0 +1,12 @@
+<ul class='elementList'>
+    <% elementList.forEach((element) => { %>
+        <% var url='/roadm/slotstate?element_id=' %>
+        <% url += element.ELEMENT_ID %>
+        <% url += '&seq_no=' %>
+        <% url += element.SEQ_NO %>
+        <% var name=element.ELEMENT_NAME; %>
+        <li>            
+            <a href="<%=url%>"><%= element.ELEMENT_NAME %></a>
+        </li>
+    <% }); %>
+</ul>
