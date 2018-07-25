@@ -10,7 +10,7 @@ router.get('/', async function(req, res) {
     logger.trace('query: ' + JSON.stringify(req.query));
 
     await slotStateData.getData(req.query)
-    .then(function(obj) {        
+    .then(function(obj) {
         res.json(obj);
     }, function(obj) {
         res.json(obj);
