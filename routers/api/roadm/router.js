@@ -2,7 +2,11 @@
 const express = require('express');
 const router = express.Router();
 
-// provision
-router.use('/slotstatedata', require('./slot_state_data_tbl'));
+// API
+router.use('/element', require('./api_element'));
+router.use('/slotstatedata', require('./api_slotStateData'));
+
+// HTML
+
 
 module.exports = router;
